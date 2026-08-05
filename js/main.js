@@ -8,19 +8,21 @@
   const progress = document.getElementById('scrollProgress');
   const backToTop = document.getElementById('backToTop');
 
-  /* Hero 3D logo acceleration on scroll */
-  const heroImg = document.querySelector('.hero-visual img');
-  let baseAnimationSpeed = 5;
+  /* Hero 3D logo: spins continuously, accelerates while scrolling past the hero */
+  const logo3d = document.getElementById('logo3d');
+  const baseSpinSpeed = 7;   // seconds per full 360° rotation, at rest
+  const baseBobSpeed = 4;    // seconds per up/down bob cycle, at rest
 
   const onScroll = () => {
     const y = window.scrollY;
     const heroHeight = document.querySelector('.hero').offsetHeight || window.innerHeight;
     const scrollProgress = Math.min(y / heroHeight, 1);
-    const accelerationFactor = 1 + scrollProgress * 2;
-    const newSpeed = baseAnimationSpeed / accelerationFactor;
+    const accelerationFactor = 1 + scrollProgress * 5; // up to 6x faster near the end of the hero
 
-    if (heroImg && !reduceMotion) {
-      heroImg.style.animationDuration = newSpeed + 's';
+    if (logo3d && !reduceMotion) {
+      const spinDuration = baseSpinSpeed / accelerationFactor;
+      const bobDuration = baseBobSpeed / accelerationFactor;
+      logo3d.style.animationDuration = `${spinDuration}s, ${bobDuration}s`;
     }
 
     header.classList.toggle('is-scrolled', y > 40);
