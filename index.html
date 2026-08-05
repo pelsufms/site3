@@ -14,12 +14,13 @@
 <link rel="apple-touch-icon" href="assets/img/favicon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ================= HEADER ================= -->
 <header class="site-header" id="siteHeader">
@@ -37,7 +38,7 @@
       <a href="#sobre">Sobre</a>
       <a href="#diretoria">Diretoria</a>
       <a href="#oportunidades">Oportunidades</a>
-      <a href="#projetos">Projetos</a>
+      <a href="#projetos">Projetos &amp; Eventos</a>
       <a href="#galeria">Galeria</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -65,63 +66,75 @@
 
   <!-- ================= HERO ================= -->
   <section class="hero" id="inicio">
-    <img class="hero-mark" id="heroMark" src="assets/img/hero-mark-icon.png" alt="" aria-hidden="true">
     <div class="container hero-grid">
-      <span class="eyebrow">Capítulo Estudantil IEEE PELS</span>
-      <h1>Eletrônica de<br>potência, <em>na prática</em></h1>
-      <p class="hero-lead">
-        Capítulo Estudantil IEEE Power Electronics Society (PELS) da Universidade Federal de Mato
-        Grosso do Sul. Projetos, eventos e oportunidades para aproximar teoria, indústria e
-        comunidade na área de conversão e controle de energia elétrica.
-      </p>
-      <div class="hero-actions">
-        <a href="#projetos" class="btn btn-primary">Ver projetos e eventos</a>
-        <a href="#membros" class="btn btn-outline">Como participar</a>
+      <div class="hero-copy">
+        <span class="eyebrow">🦇 Capítulo Estudantil IEEE PELS</span>
+        <h1>Eletrônica de potência, <em>na prática</em>, na UFMS.</h1>
+        <p class="hero-lead">
+          Somos o Capítulo Estudantil IEEE Power Electronics Society (PELS) da Universidade Federal de
+          Mato Grosso do Sul. Desenvolvemos projetos, eventos e oportunidades para aproximar teoria,
+          indústria e comunidade na área de conversão e controle de energia elétrica.
+        </p>
+        <div class="hero-actions">
+          <a href="#projetos" class="btn btn-primary">Ver projetos e eventos</a>
+          <a href="#membros" class="btn btn-outline">Como participar</a>
+        </div>
+        <div class="hero-badge hero-badge-award reveal" style="--delay:.15s">
+          <span class="award-icon">🏆</span>
+          <span><strong>Capítulo Estudantil Exemplar</strong><br>IEEE R9 SAC Awards 2026</span>
+        </div>
       </div>
-      <div class="hero-badge">
-        🏆 <span><strong>Capítulo Estudantil Exemplar</strong> — RSR&amp;RSYP CN 2026</span>
+
+      <div class="hero-visual">
+        <div class="glow-ring" aria-hidden="true"></div>
+        <img src="assets/img/logo.png" alt="Mascote do capítulo: morcego estilizado com o símbolo PELS">
       </div>
     </div>
+
     <div class="scroll-cue" aria-hidden="true">
       <span>Role para explorar</span>
       <span class="wheel"></span>
     </div>
   </section>
 
-  <!-- ================= STATS ================= -->
-  <div class="stats">
-    <div class="container stats-grid">
-      <div class="stat-cell">
-        <div class="stat-num" data-count="6">0</div>
-        <div class="stat-label">Diretores ativos</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num" data-count="417" data-suffix="+">0</div>
-        <div class="stat-label">Seguidores no Instagram</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num" data-count="5" data-suffix="+">0</div>
-        <div class="stat-label">Projetos em andamento</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num" data-count="1">0</div>
-        <div class="stat-label">Prêmio IEEE R9 2026</div>
+  <!-- ================= STATS (cena fixa ao rolar) ================= -->
+  <div class="pin-wrap" id="pinWrap">
+    <div class="pin-inner">
+      <div class="starfield" aria-hidden="true"></div>
+      <span class="pin-kicker">Impacto em números</span>
+      <div class="stats-grid">
+        <div class="stat-cine">
+          <div class="stat-num" data-count="16" data-suffix="+">0</div>
+          <div class="stat-label">Membros ativos</div>
+        </div>
+        <div class="stat-cine">
+          <div class="stat-num" data-count="417" data-suffix="+">0</div>
+          <div class="stat-label">Seguidores no Instagram</div>
+        </div>
+        <div class="stat-cine">
+          <div class="stat-num" data-count="5" data-suffix="+">0</div>
+          <div class="stat-label">Projetos em andamento</div>
+        </div>
+        <div class="stat-cine">
+          <div class="stat-num" data-count="1">0</div>
+          <div class="stat-label">Prêmio IEEE R9 em 2026</div>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ================= SOBRE ================= -->
-  <section id="sobre" class="section">
+  <section id="sobre">
     <div class="container">
       <div class="section-head reveal">
-        <span class="kicker">01 — Quem somos</span>
-        <h2>O Capítulo Estudantil<br>IEEE PELS UFMS</h2>
+        <span class="kicker">Quem somos</span>
+        <h2>O Capítulo Estudantil IEEE PELS UFMS</h2>
         <p>Parte integrante do IEEE na UFMS, com o objetivo de divulgar a Eletrônica de Potência e
           desenvolver projetos de engenharia relacionados à área.</p>
       </div>
 
       <div class="about-grid">
-        <div class="about-copy reveal">
+        <div class="about-copy reveal reveal-left">
           <p>
             O Capítulo Estudantil <strong>IEEE Power Electronics Society (PELS) UFMS</strong> mantém seus
             membros atualizados com os avanços tecnológicos e oferece ferramentas que promovem
@@ -146,7 +159,7 @@
           </div>
         </div>
 
-        <div class="mvv reveal">
+        <div class="mvv reveal reveal-right">
           <div class="mvv-card">
             <h3>Missão</h3>
             <p>Promover o avanço da eletrônica de potência e suas aplicações, incentivando o crescimento
@@ -168,114 +181,150 @@
   </section>
 
   <!-- ================= DIRETORIA ================= -->
-  <section id="diretoria" class="section" style="background:var(--ink-raised); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <section id="diretoria" class="section-alt">
     <div class="container">
       <div class="section-head center reveal">
-        <span class="kicker">02 — Gestão 2026</span>
+        <span class="kicker">Gestão 2026</span>
         <h2>Nossa Diretoria</h2>
         <p>Time responsável por planejar, organizar e sustentar as atividades do capítulo ao longo do ano.</p>
       </div>
 
-      <div class="board-grid reveal">
-        <div class="board-card">
+      <div class="board-grid">
+        <div class="board-card reveal" style="--delay:.05s">
           <div class="avatar">W</div>
           <h3>Worthon</h3>
           <span class="role">Chair</span>
         </div>
-        <div class="board-card">
+        <div class="board-card reveal" style="--delay:.1s">
           <div class="avatar">F</div>
           <h3>Fabrício</h3>
           <span class="role">Vice-Chair</span>
         </div>
-        <div class="board-card">
+        <div class="board-card reveal" style="--delay:.15s">
           <div class="avatar">L</div>
           <h3>Luigi</h3>
           <span class="role">Secretário</span>
         </div>
-        <div class="board-card">
+        <div class="board-card reveal" style="--delay:.2s">
           <div class="avatar">PP</div>
           <h3>Pedro Pereira</h3>
           <span class="role">Tesoureiro</span>
         </div>
-        <div class="board-card">
+        <div class="board-card reveal" style="--delay:.25s">
           <div class="avatar">J</div>
           <h3>Julio</h3>
           <span class="role">Webmaster</span>
         </div>
-        <div class="board-card">
+        <div class="board-card reveal" style="--delay:.3s">
           <div class="avatar">T</div>
           <h3>Thawan</h3>
           <span class="role">Diretor de Projetos</span>
         </div>
-        <div class="board-card">
+        <div class="board-card reveal" style="--delay:.35s">
           <div class="avatar">CS</div>
           <h3>Caio Sandim</h3>
           <span class="role">Diretor de Eventos</span>
         </div>
-        <div class="board-card">
+        <div class="board-card reveal" style="--delay:.4s">
           <div class="avatar">L</div>
           <h3>Lindsei</h3>
           <span class="role">Diretora de Eventos</span>
         </div>
-        <div class="board-card">
+        <div class="board-card reveal" style="--delay:.45s">
           <div class="avatar">R</div>
           <h3>Raymundo Cordero</h3>
           <span class="role">Conselheiro / Advisor</span>
         </div>
       </div>
-      <p class="board-note" style="text-align:center">* Diretoria referente à gestão 2026. Cargos alinhados ao IEEE vTools Officer Reporting.</p>
+      <p class="board-note">* Diretoria referente à gestão 2026. Cargos alinhados ao IEEE vTools Officer Reporting.</p>
+    </div>
+  </section>
+
+  <!-- ================= MEMBROS DESTAQUES ================= -->
+  <section class="section" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Membros Destaques</span>
+        <h2>Conheça quem guia a PELS</h2>
+        <p>Alguns de nossos membros que se destacam pela dedicação, pesquisa e contribuição ao capítulo.</p>
+      </div>
+
+      <div class="board-grid reveal" style="margin-top:40px;">
+        <div class="board-card">
+          <div class="avatar" style="background:linear-gradient(135deg,#e0264a,#ba0c2f);">M</div>
+          <h3>Mariana Espinola Ribeiro</h3>
+          <span class="role">Doutoranda • University of Tennessee, Knoxville (UTK)</span>
+          <p style="margin-top:10px;color:var(--ink-soft);font-size:0.88rem;">Engenharia Elétrica • Pesquisadora em conversores de potência</p>
+        </div>
+        <div class="board-card">
+          <div class="avatar" style="background:linear-gradient(135deg,#e0264a,#ba0c2f);">I</div>
+          <h3>Ianca</h3>
+          <span class="role">Membro Ativo</span>
+          <p style="margin-top:10px;color:var(--ink-soft);font-size:0.88rem;">Dedicação em pesquisa e projetos do capítulo</p>
+        </div>
+        <div class="board-card">
+          <div class="avatar" style="background:linear-gradient(135deg,#e0264a,#ba0c2f);">G</div>
+          <h3>Gabriela</h3>
+          <span class="role">Membro Ativo</span>
+          <p style="margin-top:10px;color:var(--ink-soft);font-size:0.88rem;">Contribuição em iniciativas acadêmicas e técnicas</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ================= OPORTUNIDADES ================= -->
-  <section id="oportunidades" class="section">
+  <section id="oportunidades">
     <div class="container">
       <div class="section-head reveal">
-        <span class="kicker">03 — Cresça com a gente</span>
+        <span class="kicker">Cresça com a gente</span>
         <h2>Oportunidades para membros</h2>
         <p>Bolsas, competições, eventos técnicos, voluntariado e programas de liderança abertos a
           estudantes de Engenharia da UFMS.</p>
       </div>
 
-      <div class="opp-grid reveal">
-        <div class="opp-card">
-          <span class="opp-index">01</span>
+      <div class="opp-grid">
+        <div class="opp-card reveal" style="--delay:0s">
+          <div class="opp-icon">🔬</div>
           <h3>Iniciação Científica</h3>
           <p>Novas frentes de pesquisa desenvolvidas junto a membros do capítulo, com orientação para
             quem quer dar os primeiros passos na pesquisa acadêmica em eletrônica de potência.</p>
           <span class="opp-tag">Pesquisa</span>
         </div>
-        <div class="opp-card">
-          <span class="opp-index">02</span>
+
+        <div class="opp-card reveal" style="--delay:.08s">
+          <div class="opp-icon">🏆</div>
           <h3>COBEP</h3>
           <p>Apoio e incentivo à participação de membros no Congresso Brasileiro de Eletrônica de
             Potência, o principal evento científico da área no Brasil.</p>
           <span class="opp-tag">Conferência</span>
         </div>
-        <div class="opp-card">
-          <span class="opp-index">03</span>
+
+        <div class="opp-card reveal" style="--delay:.16s">
+          <div class="opp-icon">⚡</div>
           <h3>Circuito PELS</h3>
-          <p>Novo projeto do capítulo, atualmente em desenvolvimento, voltado à prática de projeto e
-            montagem de circuitos de eletrônica de potência pelos próprios membros.</p>
+          <p>Curso completo e aplicado em eletrônica de potência, do básico de eletricidade até a montagem prática de conversores de potência. Desenvolvido integralmente pelo capítulo, oferece teoria fundamentada com prática em bancada, preparando membros para atuar em projetos industriais.</p>
           <span class="opp-tag">Novo · Competição/Prática</span>
         </div>
-        <div class="opp-card">
-          <span class="opp-index">04</span>
+
+        <div class="opp-card reveal" style="--delay:.24s">
+          <div class="opp-icon">🎤</div>
           <h3>Webinars &amp; Palestras</h3>
           <p>Encontros com profissionais e ex-membros do capítulo — como o webinar com Mariana Espinola
             Ribeiro (doutoranda na University of Tennessee, Knoxville) e a palestra com a BEM
             Inteligência de Dados — sobre carreira, indústria e inovação.</p>
           <span class="opp-tag">Desenvolvimento Profissional</span>
         </div>
-        <div class="opp-card">
-          <span class="opp-index">05</span>
+
+        <div class="opp-card reveal" style="--delay:.32s">
+          <div class="opp-icon">🤝</div>
           <h3>Voluntariado</h3>
           <p>Projeto humanitário SolIEEEdário, com doações e atividades para crianças da Comunidade
             Mandela, e apoio ao grupo de afinidade Women in Engineering (WiE) através do WEFor.</p>
           <span class="opp-tag">Impacto Social</span>
         </div>
-        <div class="opp-card">
-          <span class="opp-index">06</span>
+
+        <div class="opp-card reveal" style="--delay:.4s">
+          <div class="opp-icon">🚀</div>
           <h3>Liderança</h3>
           <p>Processos seletivos anuais para novas diretorias e coordenações de projeto — uma porta de
             entrada real para experiência de gestão dentro do IEEE.</p>
@@ -286,10 +335,10 @@
   </section>
 
   <!-- ================= PROJETOS & EVENTOS ================= -->
-  <section id="projetos" class="section" style="background:var(--ink-raised); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <section id="projetos" class="section-alt">
     <div class="container">
       <div class="section-head reveal">
-        <span class="kicker">04 — Atividades do capítulo</span>
+        <span class="kicker">Atividades do capítulo</span>
         <h2>Projetos &amp; Eventos</h2>
         <p>Um retrato do que estamos construindo — dos projetos técnicos recorrentes às parcerias e
           eventos com a comunidade.</p>
@@ -302,101 +351,129 @@
         <button class="filter-btn" data-filter="parceria">Parcerias</button>
       </div>
 
-      <div class="timeline reveal" id="timeline">
+      <div class="timeline" id="timeline">
 
-        <div class="timeline-item" data-type="projeto">
-          <div class="timeline-date">Em andamento<br><span class="badge">Projeto</span></div>
+        <div class="timeline-item reveal" data-type="projeto">
+          <span class="timeline-dot"></span>
           <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">Em andamento</span>
+              <span class="badge badge-projeto">Projeto</span>
+            </div>
             <h3>Circuito PELS</h3>
             <p>Novo projeto do capítulo voltado ao projeto e montagem prática de circuitos de eletrônica
               de potência pelos membros.</p>
           </div>
         </div>
 
-        <div class="timeline-item" data-type="projeto">
-          <div class="timeline-date">Em andamento<br><span class="badge">Projeto</span></div>
+        <div class="timeline-item reveal" data-type="projeto">
+          <span class="timeline-dot"></span>
           <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">Em andamento</span>
+              <span class="badge badge-projeto">Projeto</span>
+            </div>
             <h3>Iniciação Científica com membros PELS</h3>
-            <p>Início do desenvolvimento de projetos de Iniciação Científica junto aos membros do
-              capítulo, conectando estudo técnico e pesquisa acadêmica.</p>
+            <p>Projetos de Iniciação Científica em eletrônica de potência, com acesso a recursos como IEEE Xplore para revisão bibliográfica, desenvolvimento de pesquisa aplicada e preparação para apresentações em conferências científicas. Oportunidades de bolsa e publicação em periódicos técnicos.</p>
           </div>
         </div>
 
-        <div class="timeline-item" data-type="projeto">
-          <div class="timeline-date">Recorrente<br><span class="badge">Projeto</span></div>
+<div class="timeline-item reveal" data-type="projeto">
+          <span class="timeline-dot"></span>
           <div class="timeline-card">
-            <h3>Montagem de Conversores — Conversor Buck</h3>
-            <p>Atividade prática de modelagem e montagem de um conversor Buck, aplicando na bancada os
-              conceitos estudados em eletrônica de potência.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item" data-type="projeto">
-          <div class="timeline-date">Recorrente · última edição 04/08/2026<br><span class="badge">Projeto</span></div>
-          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">Recorrente · última edição 04/08/2026</span>
+              <span class="badge badge-projeto">Projeto</span>
+            </div>
             <h3>Power English</h3>
-            <p>Círculo de conversação em inglês voltado à prática de idioma técnico e networking entre os
-              membros do capítulo.</p>
+            <p>Círculo de conversação em inglês com foco em terminologia técnica, networking profissional e integração com a comunidade global de Power Electronics. Encontros regulares com discussões em inglês sobre projetos, artigos científicos e oportunidades de mobilidade acadêmica.</p>
           </div>
         </div>
 
-        <div class="timeline-item" data-type="projeto">
-          <div class="timeline-date">Recorrente<br><span class="badge">Projeto</span></div>
+        <div class="timeline-item reveal" data-type="projeto">
+          <span class="timeline-dot"></span>
           <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">Recorrente</span>
+              <span class="badge badge-projeto">Projeto</span>
+            </div>
             <h3>Paper Club</h3>
-            <p>Encontros de leitura e discussão de artigos científicos da área de eletrônica de potência,
-              incentivando o hábito de pesquisa entre os membros.</p>
+            <p>Encontros periódicos para leitura, discussão e análise crítica de artigos científicos de ponta em eletrônica de potência, conversão de energia e aplicações de power electronics. Desenvolve pensamento científico e prepara membros para conferências como COBEP e publicações técnicas.</p>
           </div>
         </div>
 
-        <div class="timeline-item" data-type="projeto">
-          <div class="timeline-date">Contínuo<br><span class="badge">Projeto Humanitário</span></div>
+        <div class="timeline-item reveal" data-type="projeto">
+          <span class="timeline-dot"></span>
           <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">Contínuo</span>
+              <span class="badge badge-projeto">Projeto Humanitário</span>
+            </div>
             <h3>SolIEEEdário</h3>
             <p>Ações de doação e atividades lúdicas voltadas às crianças da Comunidade Mandela,
               aproximando o capítulo da comunidade ao seu redor.</p>
           </div>
         </div>
 
-        <div class="timeline-item" data-type="evento">
-          <div class="timeline-date">2025<br><span class="badge">Evento</span></div>
+        <div class="timeline-item reveal" data-type="evento">
+          <span class="timeline-dot"></span>
           <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">2025</span>
+              <span class="badge badge-evento">Evento</span>
+            </div>
             <h3>COBEP 2025</h3>
             <p>Participação no Congresso Brasileiro de Eletrônica de Potência, um dos principais eventos
               científicos da área no país.</p>
           </div>
         </div>
 
-        <div class="timeline-item" data-type="evento">
-          <div class="timeline-date">Edição anual<br><span class="badge">Evento</span></div>
+        <div class="timeline-item reveal" data-type="evento">
+          <span class="timeline-dot"></span>
           <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">Edição anual</span>
+              <span class="badge badge-evento">Evento</span>
+            </div>
             <h3>PELS Day</h3>
             <p>Evento de divulgação científica que apresenta a eletrônica de potência e as atividades do
               capítulo à comunidade acadêmica da UFMS.</p>
           </div>
         </div>
 
-        <div class="timeline-item" data-type="evento">
-          <div class="timeline-date">26 de maio de 2026<br><span class="badge">Evento</span></div>
+        <div class="timeline-item reveal" data-type="evento">
+          <span class="timeline-dot"></span>
           <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">26 de maio de 2026</span>
+              <span class="badge badge-evento">Evento</span>
+            </div>
             <h3>Webinar com Mariana Espinola Ribeiro</h3>
             <p>Bate-papo com uma ex-membro do capítulo, hoje doutoranda em Engenharia Elétrica na
               University of Tennessee, Knoxville (UTK), sobre carreira acadêmica internacional.</p>
           </div>
         </div>
 
-        <div class="timeline-item" data-type="parceria">
-          <div class="timeline-date">2 de abril de 2026<br><span class="badge">Parceria</span></div>
+        <div class="timeline-item reveal" data-type="parceria">
+          <span class="timeline-dot"></span>
           <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">2 de abril de 2026</span>
+              <span class="badge badge-parceria">Parceria</span>
+            </div>
             <h3>Palestra — BEM Inteligência de Dados</h3>
             <p>Palestra com a empresa BEM Inteligência de Dados, aproximando os membros do capítulo do
               mercado de dados e tecnologia.</p>
           </div>
         </div>
 
-        <div class="timeline-item" data-type="parceria">
-          <div class="timeline-date">Parceria contínua<br><span class="badge">Parceria</span></div>
+        <div class="timeline-item reveal" data-type="parceria">
+          <span class="timeline-dot"></span>
           <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-date">Parceria contínua</span>
+              <span class="badge badge-parceria">Parceria</span>
+            </div>
             <h3>WEFor — apoio ao Women in Engineering (WiE)</h3>
             <p>Apoio do capítulo PELS ao grupo de afinidade WiE em ações que promovem diversidade e
               inclusão na engenharia.</p>
@@ -408,30 +485,34 @@
   </section>
 
   <!-- ================= GALERIA ================= -->
-  <section id="galeria" class="section">
+  <section id="galeria" class="section-alt">
     <div class="container">
       <div class="section-head center reveal">
-        <span class="kicker">05 — Momentos do capítulo</span>
+        <span class="kicker">Momentos do capítulo</span>
         <h2>Galeria</h2>
         <p>Registros reais das nossas atividades — clique em qualquer foto para ampliar.</p>
       </div>
 
-      <div class="gallery-grid reveal">
-        <div class="gallery-item" data-caption="Capítulo representado com a bandeira PELS em evento acadêmico">
+      <div class="gallery-grid">
+        <div class="gallery-item reveal reveal-scale tilt" style="--delay:0s" data-caption="Capítulo representado com a bandeira PELS em evento acadêmico">
           <img src="assets/img/gallery/momento-01.jpg" alt="Membros do capítulo PELS UFMS segurando a bandeira do capítulo em um evento" loading="lazy">
           <div class="gallery-overlay"><span>Representando o capítulo</span></div>
+          <span class="gallery-expand" aria-hidden="true">⤢</span>
         </div>
-        <div class="gallery-item" data-caption="Webinar com Mariana Espinola Ribeiro, ex-membro e doutoranda na UTK">
+        <div class="gallery-item reveal reveal-scale tilt" style="--delay:.08s" data-caption="Webinar com Mariana Espinola Ribeiro, ex-membro e doutoranda na UTK">
           <img src="assets/img/gallery/momento-02.jpg" alt="Webinar por videochamada com ex-membro do capítulo" loading="lazy">
           <div class="gallery-overlay"><span>Webinar com egressa (UTK)</span></div>
+          <span class="gallery-expand" aria-hidden="true">⤢</span>
         </div>
-        <div class="gallery-item" data-caption="Ação social SolIEEEdário com crianças da Comunidade Mandela">
+        <div class="gallery-item reveal reveal-scale tilt" style="--delay:.16s" data-caption="Ação social SolIEEEdário com crianças da Comunidade Mandela">
           <img src="assets/img/gallery/momento-03.jpg" alt="Voluntários do capítulo em ação social SolIEEEdário com crianças" loading="lazy">
           <div class="gallery-overlay"><span>SolIEEEdário</span></div>
+          <span class="gallery-expand" aria-hidden="true">⤢</span>
         </div>
-        <div class="gallery-item" data-caption="Apresentação de membro do capítulo em evento acadêmico da UFMS">
+        <div class="gallery-item reveal reveal-scale tilt" style="--delay:.24s" data-caption="Apresentação de membro do capítulo em evento acadêmico da UFMS">
           <img src="assets/img/gallery/momento-04.jpg" alt="Membro do capítulo apresentando em palco de evento acadêmico" loading="lazy">
           <div class="gallery-overlay"><span>No palco, representando a PELS</span></div>
+          <span class="gallery-expand" aria-hidden="true">⤢</span>
         </div>
       </div>
       <!-- TODO: substituir/completar com fotos de confraternizações e do PELS Day fornecidas pela diretoria -->
@@ -449,17 +530,49 @@
     </div>
   </div>
 
+  <!-- ================= POR QUE PELS ================= -->
+  <section class="section" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="kicker">Crescimento profissional</span>
+        <h2>Por que fazer parte da PELS UFMS?</h2>
+      </div>
+
+      <div class="why-grid reveal">
+        <div class="why-card">
+          <span class="why-icon">🎓</span>
+          <h3>Educação de Excelência</h3>
+          <p>Acesso a cursos práticos, workshops e palestras com profissionais da indústria de eletrônica de potência.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🔬</span>
+          <h3>Pesquisa Aplicada</h3>
+          <p>Oportunidades de Iniciação Científica com suporte de professores e acesso a recursos como IEEE Xplore.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🤝</span>
+          <h3>Networking Global</h3>
+          <p>Conecte-se com profissionais, pesquisadores e estudantes de engenharia em nível nacional e internacional.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">⚡</span>
+          <h3>Impacto Social</h3>
+          <p>Contribua para projetos que transformam energia limpa e eficiência em realidade nas comunidades.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= TORNE-SE MEMBRO ================= -->
   <section id="membros">
-    <div class="join">
-      <div class="container reveal">
-        <span class="kicker">06 — Torne-se membro</span>
-        <h2>Quer fazer parte<br>do IEEE PELS UFMS?</h2>
+    <div class="container">
+      <div class="join reveal reveal-scale">
+        <h2>Quer fazer parte do IEEE PELS UFMS?</h2>
         <p>Se você é estudante da UFMS e tem interesse em eletrônica de potência, inovação, educação
           técnica e networking, esse é o seu lugar.</p>
         <div class="join-actions">
-          <a href="https://chat.whatsapp.com/L0XDdYdBZkR9xxgY0qkixv" target="_blank" rel="noopener" class="btn btn-primary">Entrar no grupo do WhatsApp</a>
-          <a href="https://www.instagram.com/pels_ufms/" target="_blank" rel="noopener" class="btn btn-outline">Seguir no Instagram</a>
+          <a href="https://chat.whatsapp.com/L0XDdYdBZkR9xxgY0qkixv" target="_blank" rel="noopener" class="btn btn-ghost-light">Entrar no grupo do WhatsApp</a>
+          <a href="https://www.instagram.com/pels_ufms/" target="_blank" rel="noopener" class="btn btn-ghost-light">Seguir no Instagram</a>
         </div>
 
         <div class="join-steps">
@@ -481,12 +594,12 @@
   </section>
 
   <!-- ================= CONTATO ================= -->
-  <section id="contato" class="section">
+  <section id="contato" class="section-alt">
     <div class="container contact-grid">
-      <div class="reveal">
-        <span class="kicker">07 — Fale com a gente</span>
+      <div class="reveal reveal-left">
+        <span class="kicker">Fale com a gente</span>
         <h2>Contato &amp; Redes Sociais</h2>
-        <p style="margin-top:14px;color:var(--grey);font-family:var(--font-body)">Dúvidas, parcerias ou convites para o capítulo? Estes são
+        <p style="margin-top:14px;color:var(--ink-soft)">Dúvidas, parcerias ou convites para o capítulo? Estes são
           nossos canais oficiais de comunicação.</p>
 
         <div class="contact-list">
@@ -513,7 +626,7 @@
         </div>
       </div>
 
-      <div class="map-card reveal">
+      <div class="map-card reveal reveal-right">
         <iframe
           title="Localização — UFMS, Campo Grande"
           src="https://www.google.com/maps?q=Universidade+Federal+de+Mato+Grosso+do+Sul,+Cidade+Universit%C3%A1ria,+Campo+Grande+-+MS&output=embed"
@@ -525,6 +638,26 @@
   </section>
 
 </main>
+
+<!-- ================= DOCUMENTOS ================= -->
+<section class="section" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">Transparência e Governança</span>
+      <h2>Documentos Oficiais</h2>
+      <p>Acesse nossos documentos institucionais e legislação que normatiza o funcionamento do capítulo.</p>
+    </div>
+
+    <div class="docs-grid reveal">
+      <div class="doc-card">
+        <span class="doc-icon">📋</span>
+        <h3>Regimento Interno</h3>
+        <p>Estatuto e normas que regulam o funcionamento e a governança do Capítulo Estudantil IEEE PELS UFMS.</p>
+        <a href="../assets/docs/Regimento_Interno_PELS.pdf" target="_blank" class="btn btn-outline" style="margin-top:16px;font-size:0.85rem;">Download</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ================= FOOTER ================= -->
 <footer class="site-footer">

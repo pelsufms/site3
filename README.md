@@ -6,27 +6,14 @@ Contests 2026 — Student Website Contest** (edital R9 SAC).
 Stack: HTML + CSS + JavaScript puros (sem framework/build step), pensado para ser aberto e editado
 direto no VSCode.
 
-## Direção visual
-
-Tema escuro/cinematográfico, com tipografia grande em caixa alta (Bebas Neue) e um único momento
-forte de interação (parallax de profundidade no hero) — inspirado em
-[the-goonies.webflow.io](https://the-goonies.webflow.io/): fundo quase preto, texto branco, o
-vermelho da marca (`#BA0C2F`) usado só como destaque (títulos, botões, links, hover), sem gradientes
-nem cards flutuantes coloridos. O impacto vem da tipografia e do contraste, não de efeitos
-empilhados.
-
 ## Estrutura
 
 ```
 pels-ufms-website/
-├── index.html                    # página única com todas as seções exigidas pelo edital
-├── css/style.css                 # design system escuro + tipografia + reveal on scroll
-├── js/main.js                    # menu mobile, scrollspy, contadores, filtro da timeline, parallax do hero, lightbox
-└── assets/img/
-    ├── logo.png                  # logo completa (usada no header/footer)
-    ├── hero-mark-icon.png        # recorte só do ícone (sem a linha de texto), usado como marca d'água do hero
-    ├── favicon-*.png
-    └── gallery/                  # fotos reais do capítulo
+├── index.html          # página única com todas as seções exigidas pelo edital
+├── css/style.css        # design system (cor extraída da logo) + animações de scroll
+├── js/main.js            # menu mobile, scrollspy, reveal on scroll, contadores, filtro da timeline
+└── assets/img/           # logo e favicons gerados a partir do PDF da marca
 ```
 
 ## Rodar localmente
@@ -50,19 +37,6 @@ Depois, no GitHub: **Settings → Pages → Source: branch `main` / pasta `/root
 disponível em `https://<seu-usuario>.github.io/pels-ufms-website/` em alguns minutos. Esse é o link
 que deve ir no formulário de submissão e no relatório do edital.
 
-## Interatividade (deliberadamente enxuta)
-
-- **Hero com parallax de profundidade**: ao rolar, o ícone da mascote atrás do título escala e
-  desaparece, como se a câmera passasse por ele — o único "momento" de scroll storytelling do site,
-  em vez de vários efeitos concorrendo entre si.
-- **Reveal on scroll**: seções entram com um fade + leve subida ao aparecerem na tela.
-- **Diretoria em "character cards"**: hover revela uma borda vermelha e destaca o avatar, no
-  espírito dos cards de personagem do site de referência.
-- **Timeline filtrável** (Todos / Projetos / Eventos / Parcerias) e **galeria com lightbox**
-  (setas, teclado, legenda).
-- **Contadores animados** na barra de estatísticas.
-- Tudo respeita `prefers-reduced-motion` (testado) e o site é responsivo (testado em mobile/desktop).
-
 ## Checklist do que ainda falta preencher (conteúdo real)
 
 - [x] **Conselheiro(a)/Advisor** — confirmado como Raymundo Cordero, já preenchido na Diretoria.
@@ -85,5 +59,23 @@ que deve ir no formulário de submissão e no relatório do edital.
   priorizada para isso.
 - O edital diz explicitamente que **técnica avançada de programação não é avaliada diretamente** —
   o foco da nota é relevância, acessibilidade e utilidade do conteúdo, não a complexidade do código.
-- Contraste testado: texto branco sobre fundo escuro (~15:1) e o vermelho da marca só é usado em
-  títulos grandes/botões (onde o contraste é suficiente), nunca em texto pequeno sobre preto.
+- Animações respeitam `prefers-reduced-motion` e todo o site é responsivo (testado em mobile/desktop).
+
+## Camada 3D / interativa
+
+- **Galeria com lightbox** (`#galeria`): clique em qualquer foto para abrir em tela cheia, com
+  navegação por setas, teclado (← → Esc) e legenda.
+- **Tilt 3D**: os cards da galeria seguem o cursor do mouse com rotação em perspectiva
+  (`js/main.js`, seção "3D tilt").
+- **Spotlight**: cards de Oportunidades e Diretoria têm um brilho que segue o cursor.
+- **Ripple**: todo botão (`.btn`, filtros, menu, voltar ao topo) tem feedback de clique em onda.
+- **Hero com zoom em profundidade** (inspirado no efeito de scroll do site "The Goonies"/Webflow):
+  ao rolar a página, a mascote do hero escala e desaparece como se a câmera passasse por ela,
+  enquanto o texto se move mais devagar, criando separação de profundidade.
+- **Cena fixa de estatísticas** (inspirada no visual cinematográfico do staratlas.com): a seção de
+  números do capítulo "prende" a rolagem por alguns segundos com um fundo estrelado e os números
+  aparecem em sequência com escala/blur, como uma cena de trailer.
+- **Revelação de títulos em "cortina"**: os títulos de cada seção aparecem com um wipe (`clip-path`)
+  ao entrar na tela, no estilo usado em sites Webflow premiados.
+- Tudo isso é automaticamente desativado se o usuário tiver "reduzir movimento" ativado no sistema
+  (testado e confirmado).
