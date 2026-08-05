@@ -17,6 +17,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script>
+  (function () {
+    var stored = localStorage.getItem('pels-theme');
+    var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
 </head>
 <body>
 
@@ -44,6 +51,11 @@
       <a href="#contato">Contato</a>
     </nav>
 
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema claro/escuro" aria-pressed="false">
+      <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
+      <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
+    </button>
+
     <a href="#membros" class="btn btn-outline">Torne-se membro</a>
 
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobile">
@@ -61,6 +73,11 @@
   <a href="#galeria">Galeria</a>
   <a href="#contato">Contato</a>
   <a href="#membros" class="btn btn-primary">Torne-se membro</a>
+  <button class="theme-toggle theme-toggle-mobile" id="themeToggleMobile" type="button" aria-label="Alternar tema claro/escuro" aria-pressed="false">
+    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
+    <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
+    <span class="theme-toggle-label" id="themeToggleLabel">Tema escuro</span>
+  </button>
 </nav>
 
 <main id="conteudo">

@@ -3,6 +3,34 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Theme toggle (light/dark) ---------- */
+  const themeToggle = document.getElementById('themeToggle');
+  const themeToggleMobile = document.getElementById('themeToggleMobile');
+  const themeToggleLabel = document.getElementById('themeToggleLabel');
+  const htmlEl = document.documentElement;
+
+  const applyThemeUI = (theme) => {
+    const isDark = theme === 'dark';
+    if (themeToggle) themeToggle.setAttribute('aria-pressed', String(isDark));
+    if (themeToggleMobile) themeToggleMobile.setAttribute('aria-pressed', String(isDark));
+    if (themeToggleLabel) themeToggleLabel.textContent = isDark ? 'Tema claro' : 'Tema escuro';
+  };
+
+  const setTheme = (theme) => {
+    htmlEl.setAttribute('data-theme', theme);
+    localStorage.setItem('pels-theme', theme);
+    applyThemeUI(theme);
+  };
+
+  const toggleTheme = () => {
+    const current = htmlEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  };
+
+  applyThemeUI(htmlEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+  if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+
   /* ---------- Header shrink on scroll + scroll progress ---------- */
   const header = document.getElementById('siteHeader');
   const progress = document.getElementById('scrollProgress');
