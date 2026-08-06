@@ -58,8 +58,11 @@ import { SVGLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/
     const g = new THREE.Group();
     const meshes = [];
 
-    svgData.paths.forEach((path) => {
-      const isLight = path.color.r > 0.9 && path.color.g > 0.9 && path.color.b > 0.9;
+    svgData.paths.forEach((path, pathIndex) => {
+      // Paths 1 and 2 draw the two lines of the institutional signature:
+      // “IEEE PELS” and “UFMS CHAPTER”. Lift them in white for legibility.
+      const isInstitutionalText = pathIndex === 1 || pathIndex === 2;
+      const isLight = isInstitutionalText || (path.color.r > 0.9 && path.color.g > 0.9 && path.color.b > 0.9);
       const depth = isLight ? 14 : 38;
       const shapes = SVGLoader.createShapes(path);
       shapes.forEach((shape) => {
