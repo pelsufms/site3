@@ -676,6 +676,7 @@ section { padding: 108px 0; perspective: 1200px; }
   gap: 22px;
 }
 .board-card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -702,7 +703,10 @@ section { padding: 108px 0; perspective: 1200px; }
   box-shadow: var(--shadow-red);
 }
 .member-photo {
+  position: relative;
   width: 92px; height: 92px;
+  aspect-ratio: 1;
+  flex: 0 0 92px;
   border-radius: 50%;
   margin: 0 auto 16px;
   background-image: var(--member-photo), linear-gradient(135deg, var(--red), var(--red-dark));
@@ -1371,3 +1375,10 @@ section { padding: 108px 0; perspective: 1200px; }
 .contact-item .contact-icon-instagram { color: #d62976; background: rgba(214, 41, 118, .12); }
 .contact-item .contact-icon-youtube { color: #f20d0d; background: rgba(242, 13, 13, .12); }
 .contact-item .contact-icon-whatsapp { color: #25d366; background: rgba(37, 211, 102, .12); }
+.contact-item .contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.contact-item .contact-icon svg { display: block; margin: 0; }
