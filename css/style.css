@@ -378,71 +378,42 @@ html[data-theme="dark"] .theme-icon-moon { display: inline; }
   perspective: 1400px;
 }
 .logo-3d-spin {
-  --box-w: min(260px, 58vw);
-  --box-h: min(260px, 58vw);
-  --box-d: 42px;
   position: relative;
-  width: var(--box-w);
-  height: var(--box-h);
+  width: min(300px, 62vw);
+  aspect-ratio: 1106 / 566;
   transform-style: preserve-3d;
-  animation: spin3d 7s linear infinite, bob3d 4s ease-in-out infinite;
-  filter: drop-shadow(0 30px 40px rgba(186, 12, 47, 0.3));
+  cursor: grab;
+  touch-action: none;
+  animation: bob3d 4s ease-in-out infinite;
   will-change: transform;
 }
-.box-face {
+.logo-3d-spin:active { cursor: grabbing; }
+.logo-3d-spin.is-dragging { animation-play-state: paused; }
+.logo-layer {
   position: absolute;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.box-front, .box-back {
-  top: 0; left: 0;
-  width: var(--box-w);
-  height: var(--box-h);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15%;
-  background: linear-gradient(145deg, #ffffff 0%, #f2eef0 100%);
-  border-radius: 30px;
-  box-shadow: inset 0 3px 6px rgba(255,255,255,0.9), inset 0 -8px 16px rgba(0,0,0,0.07);
-}
-.box-front img, .box-back img {
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 8px 12px rgba(186,12,47,0.3));
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
-.box-front { transform: translateZ(calc(var(--box-d) / 2)); }
-.box-back  { transform: rotateY(180deg) translateZ(calc(var(--box-d) / 2)); }
-
-.box-top, .box-bottom, .box-left, .box-right {
-  background: linear-gradient(180deg, var(--red-light) 0%, var(--red) 45%, var(--red-dark) 100%);
+.logo-layer:last-child {
+  filter: drop-shadow(0 20px 30px rgba(186, 12, 47, 0.35));
 }
-.box-top, .box-bottom {
-  width: var(--box-w);
-  height: var(--box-d);
-  left: 0;
-  top: calc((var(--box-h) - var(--box-d)) / 2);
-  border-radius: 6px;
-}
-.box-top { transform: rotateX(90deg) translateZ(calc(var(--box-h) / 2)); }
-.box-bottom {
-  transform: rotateX(-90deg) translateZ(calc(var(--box-h) / 2));
-  background: linear-gradient(180deg, var(--red-dark) 0%, var(--red-darker) 100%);
-}
-.box-left, .box-right {
-  width: var(--box-d);
-  height: var(--box-h);
-  top: 0;
-  left: calc((var(--box-w) - var(--box-d)) / 2);
-  border-radius: 6px;
-}
-.box-right { transform: rotateY(90deg) translateZ(calc(var(--box-w) / 2)); }
-.box-left  { transform: rotateY(-90deg) translateZ(calc(var(--box-w) / 2)); }
-
-@keyframes spin3d {
-  from { transform: rotateY(0deg) rotateX(12deg); }
-  to { transform: rotateY(360deg) rotateX(12deg); }
+.logo-3d-hint {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  opacity: 0.8;
+  pointer-events: none;
 }
 @keyframes bob3d {
   0%, 100% { translate: 0 0; }
@@ -622,11 +593,13 @@ section { padding: 108px 0; perspective: 1200px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .reveal-scale, .reveal-left, .reveal-right,
-  .logo-3d-spin, .hero-visual .glow-ring, .scroll-cue .wheel::before {
+  .hero-visual .glow-ring, .scroll-cue .wheel::before {
     opacity: 1 !important; transform: none !important; translate: none !important; animation: none !important;
   }
-  .box-back, .box-top, .box-bottom, .box-left, .box-right { display: none; }
-  .box-front { transform: none !important; }
+  /* .logo-3d-spin keeps its transform controllable: ambient bob/auto-spin are
+     disabled in JS, but the user can still drag it — that motion is user-initiated. */
+  .logo-3d-spin { animation: none !important; }
+  .logo-3d-hint { display: none; }
 }
 
 /* ---------- About / Sobre ---------- */
