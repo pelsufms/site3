@@ -11,10 +11,18 @@
 
   const applyThemeUI = (theme) => {
     const isDark = theme === 'dark';
+    const isEn = htmlEl.getAttribute('lang') === 'en';
     if (themeToggle) themeToggle.setAttribute('aria-pressed', String(isDark));
     if (themeToggleMobile) themeToggleMobile.setAttribute('aria-pressed', String(isDark));
-    if (themeToggleLabel) themeToggleLabel.textContent = isDark ? 'Tema claro' : 'Tema escuro';
+    if (themeToggleLabel) {
+      themeToggleLabel.textContent = isEn
+        ? (isDark ? 'Light theme' : 'Dark theme')
+        : (isDark ? 'Tema claro' : 'Tema escuro');
+    }
   };
+  document.addEventListener('pelslangchange', () => {
+    applyThemeUI(htmlEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  });
 
   const setTheme = (theme) => {
     htmlEl.setAttribute('data-theme', theme);
@@ -163,7 +171,19 @@
   });
 
   /* ---------- Footer year ---------- */
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const year = new Date().getFullYear();
+  document.querySelectorAll('#year, #yearEn').forEach((el) => { el.textContent = year; });
+
+  /* ---------- Footer last-updated (from file's real mtime, no fake date) ---------- */
+  const mtime = new Date(document.lastModified);
+  if (!isNaN(mtime)) {
+    const ptEl = document.getElementById('lastUpdated');
+    const enEl = document.getElementById('lastUpdatedEn');
+    if (ptEl) ptEl.textContent = mtime.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+    if (enEl) enEl.textContent = mtime.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+  } else {
+    document.querySelectorAll('.footer-updated').forEach((el) => el.remove());
+  }
 
   /* ---------- Ripple on every button click ---------- */
   const rippleTargets = document.querySelectorAll('.btn, .filter-btn, .nav-toggle, .back-to-top, .gallery-item');
@@ -307,9 +327,14 @@
   if (galleryItems.length && lightbox) {
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxFocusable = lightbox.querySelectorAll('button');
     let currentIndex = 0;
+    let lastFocused = null;
 
     const openLightbox = (index) => {
+      const isFirstOpen = !lightbox.classList.contains('is-open');
+      if (isFirstOpen) lastFocused = document.activeElement;
       currentIndex = (index + galleryItems.length) % galleryItems.length;
       const item = galleryItems[currentIndex];
       const img = item.querySelector('img');
@@ -319,19 +344,27 @@
       lightbox.classList.add('is-open');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      if (isFirstOpen) setTimeout(() => lightboxClose.focus(), 0);
     };
 
     const closeLightbox = () => {
       lightbox.classList.remove('is-open');
       lightbox.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
     };
 
     galleryItems.forEach((item, index) => {
       item.addEventListener('click', () => openLightbox(index));
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(index);
+        }
+      });
     });
 
-    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('click', closeLightbox);
     document.getElementById('lightboxPrev').addEventListener('click', () => openLightbox(currentIndex - 1));
     document.getElementById('lightboxNext').addEventListener('click', () => openLightbox(currentIndex + 1));
 
@@ -344,6 +377,18 @@
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowRight') openLightbox(currentIndex + 1);
       if (e.key === 'ArrowLeft') openLightbox(currentIndex - 1);
+      if (e.key === 'Tab') {
+        const focusables = Array.from(lightboxFocusable);
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
   }
 
