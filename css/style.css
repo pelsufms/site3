@@ -721,6 +721,7 @@ section { padding: 108px 0; perspective: 1200px; }
   font-size: 1.25rem;
   text-shadow: 0 1px 5px rgba(0,0,0,.45);
 }
+.member-photo.has-photo span { opacity: 0; }
 .board-card h3 { font-size: 1rem; color: var(--ink); }
 .board-card .role { display: block; margin-top: 4px; color: var(--red); font-size: 0.82rem; font-weight: 600; }
 .board-note {
