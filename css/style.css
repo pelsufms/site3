@@ -1324,3 +1324,37 @@ section { padding: 108px 0; perspective: 1200px; }
 @media (max-width: 480px) {
   .stats-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ---------- Correções de mídia e ícones ---------- */
+.product-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: .94;
+  transition: transform .6s var(--ease);
+}
+.product-card:hover .product-photo { transform: scale(1.045); }
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 38% 0 0;
+  z-index: 2;
+  background: linear-gradient(transparent, rgba(4, 10, 19, .94));
+}
+.contact-item > span:not(.contact-icon) {
+  display: block;
+  font-size: .85rem;
+  color: var(--ink-soft);
+}
+.contact-item > span:not(.contact-icon) strong {
+  display: block;
+  font-size: .92rem;
+  color: var(--ink);
+}
+.contact-icon-email { color: #ba0c2f; background: rgba(186, 12, 47, .12); }
+.contact-icon-instagram { color: #d62976; background: rgba(214, 41, 118, .12); }
+.contact-icon-youtube { color: #f20d0d; background: rgba(242, 13, 13, .12); }
+.contact-icon-whatsapp { color: #25d366; background: rgba(37, 211, 102, .12); }
