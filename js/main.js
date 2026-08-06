@@ -348,14 +348,11 @@
   }
 
   /* ---------- Retratos da diretoria ---------- */
-  document.querySelectorAll('.member-photo').forEach((portrait) => {
-    const backgroundImage = getComputedStyle(portrait).backgroundImage;
-    const urlMatch = backgroundImage.match(/url\(["']?(.+?)["']?\)/);
-    if (!urlMatch) return;
-
-    const image = new Image();
-    image.onload = () => portrait.classList.add('has-photo');
-    image.src = urlMatch[1];
+  document.querySelectorAll('.member-photo img').forEach((image) => {
+    const portrait = image.closest('.member-photo');
+    const revealPortrait = () => portrait.classList.add('has-photo');
+    if (image.complete && image.naturalWidth > 0) revealPortrait();
+    else image.addEventListener('load', revealPortrait, { once: true });
   });
 
 })();
