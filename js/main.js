@@ -229,7 +229,9 @@
   const heroSection = document.querySelector('.hero');
   const heroCopy = document.querySelector('.hero-copy');
 
-  if (!reduceMotion && heroVisual) {
+  const cinematicHero = !reduceMotion && heroVisual && window.matchMedia('(min-width: 761px)').matches;
+
+  if (cinematicHero) {
     let heroTiltX = 0;
     let heroTiltY = 0;
     const heroHeight = () => heroSection.offsetHeight || window.innerHeight;
@@ -270,13 +272,18 @@
         applyHeroTransform();
       });
     }
+  } else if (heroVisual) {
+    heroVisual.style.transform = '';
+    heroVisual.style.opacity = '1';
+    if (glowRing) { glowRing.style.transform = ''; glowRing.style.opacity = ''; }
+    if (heroCopy) { heroCopy.style.transform = ''; heroCopy.style.opacity = '1'; }
   }
 
   /* ---------- Cinematic pinned stats (Star Atlas-style scroll scene) ---------- */
   const pinWrap = document.getElementById('pinWrap');
   const cineStats = document.querySelectorAll('.stat-cine');
 
-  if (!reduceMotion && pinWrap && cineStats.length) {
+  if (!reduceMotion && window.matchMedia('(min-width: 761px)').matches && pinWrap && cineStats.length) {
     const updatePin = () => {
       const rect = pinWrap.getBoundingClientRect();
       const total = rect.height - window.innerHeight;

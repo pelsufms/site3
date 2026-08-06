@@ -39,18 +39,20 @@ import { SVGLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/
     const svgData = loader.parse(SVG_MARK);
 
     const redMat = new THREE.MeshPhysicalMaterial({
-      color: 0x9c0a26,
-      metalness: 0.55,
-      roughness: 0.32,
-      clearcoat: 0.65,
-      clearcoatRoughness: 0.25,
+      // A brighter chapter red keeps the silhouette legible while it turns.
+      color: 0xd3264b,
+      metalness: 0.48,
+      roughness: 0.27,
+      clearcoat: 0.78,
+      clearcoatRoughness: 0.18,
     });
     const lightMat = new THREE.MeshPhysicalMaterial({
-      color: 0xf4dde1,
-      metalness: 0.55,
-      roughness: 0.2,
-      clearcoat: 0.7,
-      clearcoatRoughness: 0.2,
+      // White lettering stands out from the red body at every viewing angle.
+      color: 0xffffff,
+      metalness: 0.35,
+      roughness: 0.18,
+      clearcoat: 0.82,
+      clearcoatRoughness: 0.14,
     });
 
     const g = new THREE.Group();
@@ -104,7 +106,7 @@ import { SVGLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/
     const key = new THREE.DirectionalLight(0xffffff, 1.5);
     key.position.set(180, 260, 420);
     scene.add(key);
-    const rim = new THREE.DirectionalLight(0xffc2cc, 0.9);
+    const rim = new THREE.DirectionalLight(0xffd9e1, 1.05);
     rim.position.set(-260, -120, -180);
     scene.add(rim);
     const fillLight = new THREE.PointLight(0xffffff, 0.6);

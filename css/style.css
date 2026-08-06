@@ -701,6 +701,26 @@ section { padding: 108px 0; perspective: 1200px; }
   font-size: 1.3rem;
   box-shadow: var(--shadow-red);
 }
+.member-photo {
+  width: 92px; height: 92px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  background-image: var(--member-photo), linear-gradient(135deg, var(--red), var(--red-dark));
+  background-size: cover;
+  background-position: center;
+  border: 3px solid var(--surface);
+  box-shadow: 0 0 0 2px var(--red), var(--shadow-red);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.member-photo span {
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-shadow: 0 1px 5px rgba(0,0,0,.45);
+}
 .board-card h3 { font-size: 1rem; color: var(--ink); }
 .board-card .role { display: block; margin-top: 4px; color: var(--red); font-size: 0.82rem; font-weight: 600; }
 .board-note {
@@ -821,6 +841,45 @@ section { padding: 108px 0; perspective: 1200px; }
 .badge-parceria { background: var(--badge-parceria-bg); color: var(--badge-parceria-ink); }
 .timeline-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
 .timeline-card p { color: var(--ink-soft); font-size: 0.94rem; }
+
+/* ---------- Lojinha PELS ---------- */
+.store-section {
+  padding: 112px 0;
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.store-layout {
+  display: grid;
+  grid-template-columns: 1fr .85fr;
+  align-items: center;
+  gap: 72px;
+}
+.store-copy h2 { font-size: clamp(2rem, 4vw, 3.4rem); margin: 12px 0 18px; }
+.store-copy > p { color: var(--ink-soft); max-width: 54ch; }
+.store-points { margin: 26px 0 30px; display: grid; gap: 11px; }
+.store-points li { color: var(--ink-soft); padding-left: 25px; position: relative; }
+.store-points li::before { content: '✓'; position: absolute; left: 0; color: var(--red); font-weight: 800; }
+.product-card {
+  position: relative;
+  min-height: 392px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 1.5);
+  background: linear-gradient(145deg, #18243a, #07111f);
+  color: #fff;
+  box-shadow: 0 20px 46px rgba(7, 17, 31, .24);
+}
+.product-card::after { content: ''; position: absolute; width: 280px; height: 280px; border-radius: 50%; right: -90px; top: -90px; background: rgba(186,12,47,.25); filter: blur(20px); }
+.cap-illustration { position: absolute; inset: 36px 20px 115px; display: grid; place-items: center; transform: rotate(-10deg); }
+.cap-crown { position: relative; width: 220px; height: 146px; border-radius: 120px 120px 34px 34px; background: linear-gradient(145deg, #203d66 0%, #09182e 76%); box-shadow: inset 20px 15px 30px rgba(255,255,255,.08), 18px 24px 30px rgba(0,0,0,.38); z-index: 2; }
+.cap-crown::after { content: ''; position: absolute; left: 50%; top: 5px; width: 1px; height: 130px; background: rgba(255,255,255,.12); transform: translateX(-50%); }
+.cap-crown img { width: 102px; height: 76px; object-fit: contain; position: absolute; left: 59px; top: 36px; filter: brightness(0) invert(1) drop-shadow(0 2px 2px rgba(0,0,0,.45)); }
+.cap-brim { position: absolute; width: 198px; height: 58px; border-radius: 8px 100% 100% 42px; background: linear-gradient(160deg, #1c385f, #061329 85%); transform: translate(68px, 91px) rotate(-9deg); box-shadow: 12px 20px 22px rgba(0,0,0,.36); }
+.product-info { position: absolute; z-index: 3; left: 26px; right: 26px; bottom: 24px; }
+.product-status { display: inline-block; padding: 4px 9px; border-radius: 999px; background: rgba(255,255,255,.13); color: #fff; font-size: .7rem; letter-spacing: .4px; text-transform: uppercase; font-weight: 700; }
+.product-info h3 { margin: 10px 0 5px; font-size: 1.25rem; }
+.product-info p { color: rgba(255,255,255,.75); font-size: .9rem; }
 
 /* ---------- Why PELS section ---------- */
 .why-grid {
@@ -1008,6 +1067,17 @@ section { padding: 108px 0; perspective: 1200px; }
   transition: background 0.25s, transform 0.25s;
 }
 .social-row a:hover { background: var(--red); transform: translateY(-4px); }
+.social-row svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.social-row svg .fill { fill: currentColor; stroke: none; }
+
+/* ---------- Identidade dos canais ---------- */
+.contact-icon { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; border-radius: 12px; background: var(--bg-alt); color: var(--red); }
+.contact-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.contact-icon svg .fill { fill: currentColor; stroke: none; }
+.contact-icon-instagram { color: #d62976; background: color-mix(in srgb, #d62976 12%, var(--bg-alt)); }
+.contact-icon-youtube { color: #f20d0d; background: color-mix(in srgb, #f20d0d 12%, var(--bg-alt)); }
+.contact-icon-whatsapp { color: #25d366; background: color-mix(in srgb, #25d366 12%, var(--bg-alt)); }
+.pels-international-mark { color: #ba0c2f; font-family: var(--font-head); font-size: .75rem; letter-spacing: -.4px; font-weight: 800; border: 1px solid currentColor; background: transparent; }
 
 /* ---------- Back to top ---------- */
 .back-to-top {
@@ -1210,15 +1280,44 @@ section { padding: 108px 0; perspective: 1200px; }
   .why-grid { grid-template-columns: 1fr; }
   .join-steps { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .store-layout { grid-template-columns: 1fr; gap: 42px; }
+  .store-copy { text-align: center; }
+  .store-copy > p { margin-inline: auto; }
+  .store-points { text-align: left; max-width: 520px; margin-inline: auto; }
 }
 @media (max-width: 980px) {
   .nav-desktop, .site-header .btn-outline { display: none; }
   .nav-toggle { display: block; }
 }
 @media (max-width: 760px) {
+  .hero { min-height: auto; padding: 96px 0 62px; align-items: flex-start; }
+  .hero-grid { gap: 20px; }
+  .hero-copy { order: 2; transform: none !important; opacity: 1 !important; }
+  .hero-visual { order: 1; min-height: 250px; }
+  .logo-3d-canvas { width: min(300px, 74vw); }
+  .hero-visual .glow-ring { width: 310px; height: 310px; }
+  .logo-3d-hint { bottom: -8px; }
+  .hero h1 { font-size: clamp(2rem, 10vw, 2.7rem); }
+  .hero-lead { font-size: 1rem; line-height: 1.65; }
+  .hero-actions { margin-top: 26px; }
+  .hero-actions .btn { flex: 1 1 100%; justify-content: center; }
+  .hero-badge { margin-top: 24px; text-align: left; align-items: flex-start; }
+  .scroll-cue { display: none; }
+  .pin-wrap { height: auto; }
+  .pin-inner { position: static; height: auto; min-height: 0; padding: 68px 24px; }
+  .stat-cine { opacity: 1; transform: none; filter: none; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .opp-grid { grid-template-columns: 1fr; }
   section { padding: 80px 0; }
+  .store-section { padding: 78px 0; }
+  .product-card { min-height: 360px; }
+  .filter-row { gap: 8px; margin-bottom: 28px; }
+  .filter-btn { flex: 1 1 auto; padding: 10px 12px; }
+  .timeline-item { padding-left: 42px; }
+  .timeline::before { left: 13px; }
+  .timeline-dot { left: 4px; }
+  .timeline-card { padding: 20px; }
+  .contact-item { padding: 15px; }
   .join { padding: 48px 24px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
 }
