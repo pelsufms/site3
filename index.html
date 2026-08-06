@@ -105,8 +105,8 @@
 
       <div class="hero-visual">
         <div class="glow-ring" aria-hidden="true"></div>
-        <div class="logo-3d-spin" id="logo3d" role="img" aria-label="Mascote do capítulo: morcego estilizado com o símbolo PELS, em 3D — arraste para girar" tabindex="0">
-          <noscript><img src="assets/img/logo.png" alt="Mascote do capítulo: morcego estilizado com o símbolo PELS"></noscript>
+        <div class="logo-3d-canvas" id="logo3dCanvas" role="img" aria-label="Mascote do capítulo: morcego estilizado com o símbolo PELS, extrudado em 3D — arraste para girar" tabindex="0">
+          <img class="logo-3d-fallback" src="assets/img/hero-mark-icon.png" alt="Mascote do capítulo: morcego estilizado com o símbolo PELS">
         </div>
         <span class="logo-3d-hint" aria-hidden="true">Arraste para girar</span>
       </div>
@@ -197,6 +197,18 @@
               indústria, networking, profissionalismo e voluntariado.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= APOIADORES ================= -->
+  <section class="supporters">
+    <div class="container">
+      <span class="supporters-label">Apoio institucional</span>
+      <div class="supporters-row">
+        <span class="supporter-mark">IEEE</span>
+        <span class="supporter-mark">BATLAB</span>
+        <span class="supporter-mark">PPGEE</span>
       </div>
     </div>
   </section>
@@ -736,5 +748,13 @@
 <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
 
 <script src="js/main.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+<script type="module" src="js/logo3d.js"></script>
 </body>
 </html>

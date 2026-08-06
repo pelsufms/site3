@@ -36,17 +36,8 @@
   const progress = document.getElementById('scrollProgress');
   const backToTop = document.getElementById('backToTop');
 
-  /* Hero 3D logo: extruded layered mark that auto-spins and accelerates on
-     scroll, and can be grabbed with mouse/touch to rotate freely. */
-  const logo3d = document.getElementById('logo3d');
-  let heroScrollAccel = 1;
-
   const onScroll = () => {
     const y = window.scrollY;
-    const heroHeight = document.querySelector('.hero').offsetHeight || window.innerHeight;
-    const scrollProgress = Math.min(y / heroHeight, 1);
-    heroScrollAccel = 1 + scrollProgress * 5; // up to 6x faster near the end of the hero
-
     header.classList.toggle('is-scrolled', y > 40);
     backToTop.classList.toggle('is-visible', y > 600);
 
@@ -60,6 +51,9 @@
   backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
+
+  /* Note: the 3D hero mark itself (extruded from the vector logo, auto-spin,
+     drag-to-rotate, scroll acceleration) is handled by js/logo3d.js. */
 
   /* ---------- Mobile nav ---------- */
   const navToggle = document.getElementById('navToggle');

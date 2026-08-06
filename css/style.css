@@ -217,8 +217,12 @@ button { font: inherit; cursor: pointer; }
   border: 1px solid var(--border);
   background: var(--surface);
   font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
   transition: background 0.25s, border-color 0.25s, transform 0.25s;
 }
+.theme-icon { pointer-events: none; }
 .theme-toggle:hover { transform: translateY(-2px); border-color: var(--red); }
 .theme-icon-moon { display: none; }
 html[data-theme="dark"] .theme-icon-sun { display: none; }
@@ -374,37 +378,33 @@ html[data-theme="dark"] .theme-icon-moon { display: inline; }
   background: radial-gradient(circle, rgba(186,12,47,0.14) 0%, transparent 70%);
   animation: pulse 6s ease-in-out infinite;
 }
-.hero-visual {
-  perspective: 1400px;
-}
-.logo-3d-spin {
+.logo-3d-canvas {
   position: relative;
-  width: min(300px, 62vw);
-  aspect-ratio: 1106 / 566;
-  transform-style: preserve-3d;
+  width: min(460px, 82vw);
+  aspect-ratio: 1 / 1;
   cursor: grab;
   touch-action: none;
-  animation: bob3d 4s ease-in-out infinite;
-  will-change: transform;
+  filter: drop-shadow(0 26px 34px rgba(186, 12, 47, 0.3));
 }
-.logo-3d-spin:active { cursor: grabbing; }
-.logo-3d-spin.is-dragging { animation-play-state: paused; }
-.logo-layer {
+.logo-3d-canvas:active,
+.logo-3d-canvas.is-dragging { cursor: grabbing; }
+.logo-3d-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+.logo-3d-fallback {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
   pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
 }
-.logo-layer:last-child {
-  filter: drop-shadow(0 20px 30px rgba(186, 12, 47, 0.35));
-}
+.logo-3d-canvas.is-ready .logo-3d-fallback { display: none; }
 .logo-3d-hint {
   position: absolute;
-  bottom: 6px;
+  bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 0.72rem;
@@ -414,10 +414,7 @@ html[data-theme="dark"] .theme-icon-moon { display: inline; }
   text-transform: uppercase;
   opacity: 0.8;
   pointer-events: none;
-}
-@keyframes bob3d {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -14px; }
+  white-space: nowrap;
 }
 @keyframes pulse {
   0%, 100% { transform: scale(1); opacity: 1; }
@@ -460,7 +457,7 @@ html[data-theme="dark"] .theme-icon-moon { display: inline; }
 /* ---------- Stats: cinematic pinned scene ---------- */
 .pin-wrap {
   position: relative;
-  height: 260vh;
+  height: 150vh;
   background: linear-gradient(180deg, var(--red-darker) 0%, var(--red-dark) 45%, var(--red-darker) 100%);
 }
 .pin-inner {
@@ -537,7 +534,7 @@ html[data-theme="dark"] .theme-icon-moon { display: inline; }
   .stat-cine { opacity: 1; transform: none; filter: none; }
 }
 @media (max-width: 760px) {
-  .pin-wrap { height: 220vh; }
+  .pin-wrap { height: 130vh; }
   .pin-inner .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
 }
 
@@ -596,10 +593,8 @@ section { padding: 108px 0; perspective: 1200px; }
   .hero-visual .glow-ring, .scroll-cue .wheel::before {
     opacity: 1 !important; transform: none !important; translate: none !important; animation: none !important;
   }
-  /* .logo-3d-spin keeps its transform controllable: ambient bob/auto-spin are
-     disabled in JS, but the user can still drag it — that motion is user-initiated. */
-  .logo-3d-spin { animation: none !important; }
-  .logo-3d-hint { display: none; }
+  /* The 3D mark's auto-spin is disabled in JS under reduced motion, but
+     dragging it stays available — that motion is user-initiated. */
 }
 
 /* ---------- About / Sobre ---------- */
@@ -633,6 +628,45 @@ section { padding: 108px 0; perspective: 1200px; }
   font-weight: 600;
   padding: 7px 14px;
   border-radius: 999px;
+}
+
+/* ---------- Supporters ---------- */
+.supporters {
+  padding: 44px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+.supporters-label {
+  display: block;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.supporters-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.supporter-mark {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  color: var(--ink-soft);
+  opacity: 0.75;
+  transition: opacity 0.25s, color 0.25s;
+}
+.supporter-mark:hover { opacity: 1; color: var(--red); }
+@media (max-width: 480px) {
+  .supporters-row { gap: 28px; }
+  .supporter-mark { font-size: 1.05rem; }
 }
 
 /* ---------- Board / Diretoria ---------- */
